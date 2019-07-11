@@ -1,0 +1,61 @@
+.calendar {
+  .col {
+    overflow-y: auto !important;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .event {
+      background-color: lightgray;
+      margin: 2px 0;
+      padding: 2px 16px 2px 2px;
+      font-size: 12px;
+      z-index: 999;
+      position: relative;
+      color: white;
+      font-weight: 500;
+
+      &:last-child {
+        margin-bottom: 8px;
+
+        &:after {
+          content: 'Add Reminder';
+          font-size: 10px;
+          position: absolute;
+          cursor: pointer;
+          padding: 4px 0;
+          bottom: -24px;
+          left: 0;
+          color: black;
+          width: 100%;
+          background-color: white;
+          text-align: center;
+        }
+      }
+
+      .edit {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 100000;
+        background-color: transparent;
+
+        &:hover {
+          &:after {
+            content: 'Edit';
+            text-align: right;
+            right: 0;
+            left: -5px;
+            top: 2px;
+            width: 100%;
+            display: block;
+            position: absolute;
+            font-size: 9px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

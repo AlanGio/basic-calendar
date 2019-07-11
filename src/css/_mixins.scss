@@ -1,0 +1,14 @@
+@mixin closeButton() {
+  &:after{
+    display: inline-block;
+    content: "\D7";
+    color: black;
+    font-size: 32px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 16px;
+  }
+}
