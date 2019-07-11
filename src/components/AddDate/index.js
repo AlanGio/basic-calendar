@@ -147,7 +147,7 @@ class AddDate extends React.Component {
             <div key={id}>The weather will be: <b>{main}</b> ({description})</div>
           ))}
 
-          <input type="submit" value="Add Reminder" />
+          <input type="submit" value="Add Reminder" disabled={loading} />
         </form>
       </div>
     );

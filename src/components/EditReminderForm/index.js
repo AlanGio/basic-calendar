@@ -158,7 +158,7 @@ class EditReminderForm extends React.Component {
           <button type="button" onClick={this.removeReminderButton}>
             Remove Reminder
           </button>
-          <input type="submit" value="Edit Reminder" />
+          <input type="submit" value="Edit Reminder" disabled={loading} />
         </form>
       </div>
     );
