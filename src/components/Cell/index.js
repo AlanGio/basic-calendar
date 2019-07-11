@@ -87,9 +87,9 @@ class Cell extends React.Component {
 
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
+
         formattedDate = dateFns.format(day, dateFormat);
         const cloneDay = day;
-
         const todayReminders = this.getTodayReminders(day);
 
         days.push(
@@ -107,12 +107,12 @@ class Cell extends React.Component {
             </span>
 
             {todayReminders.length > 0 && (<button className="removeall" onClick={(e) => this.deleteAllReminders(e, todayReminders)}>X Clean Date</button>)}
-            {todayReminders.map((reminder, index) => {
-              return  <div className="event" key={`dat_${index}`} style={{ backgroundColor: reminder.color }}>
-                        <div className="edit" onClick={(e) => this.editReminder(e, reminder)} />
-                        <b>{dateFns.format(reminder.time, hourFormat).toString()}</b> - {reminder.title}
-                      </div>
-            })}
+            {todayReminders.map((reminder, index) => (
+              <div className="event" key={`dat_${index}`} style={{ backgroundColor: reminder.color }}>
+                  <div className="edit" onClick={(e) => this.editReminder(e, reminder)} />
+                  <b>{dateFns.format(reminder.time, hourFormat).toString()}</b> - {reminder.title}
+                </div>
+            ))}
           </div>,
         );
         day = dateFns.addDays(day, 1);

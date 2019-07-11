@@ -7,14 +7,12 @@ import { GithubPicker } from 'react-color';
 import { addReminder } from '../../actions/reminders';
 import { getWeather } from '../../actions/weather';
 
-
 import 'rc-time-picker-date-fns/assets/index.css';
 import './AddDate.scss';
 
 const showSecond = false;
 
 class AddDate extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -70,31 +68,32 @@ class AddDate extends React.Component {
   }
 
   closeButton() {
-    this.props.showAddForm(false);
+    const { showAddForm } = this.props;
+    showAddForm(false);
   }
 
   handleSubmit(event) {
-    const { addReminder } = this.props;
+    const { addReminder, selectedDate, showAddForm, weather } = this.props;
+    const { city, color, title } = this.state;
 
-    const time = new Date(this.props.selectedDate);
+    const time = new Date(selectedDate);
     time.setHours(this.state.time.getHours());
     time.setMinutes(this.state.time.getMinutes());
 
     addReminder({
-      city: this.state.city,
-      color: this.state.color,
+      city: city,
+      color: color,
       time,
-      title: this.state.title,
-      weather: this.props.weather,
+      title: title,
+      weather: weather,
     });
-    this.props.showAddForm(false);
+    showAddForm(false);
     event.preventDefault();
   }
 
   render() {
-    const { weather, loading } = this.props;
-    const { city } = this.state;
-    console.log(this.props);
+    const { selectedDate, loading, weather } = this.props;
+    const { background, city, title } = this.state;
 
      return (
       <div className="form col-center add-reminder-form">
@@ -108,7 +107,7 @@ class AddDate extends React.Component {
             Choose Hour:
             <TimePicker
               showSecond={showSecond}
-              defaultValue={this.props.selectedDate}
+              defaultValue={selectedDate}
               className="time-picker"
               onChange={this.onChangeTime}
             />
@@ -118,7 +117,7 @@ class AddDate extends React.Component {
           <label>
             Choose Color:
             <GithubPicker
-              color={this.state.background}
+              color={background}
               onChangeComplete={this.onChangeColor}
             />
           </label>
@@ -127,7 +126,7 @@ class AddDate extends React.Component {
           <label>
             Reminder Title:
             <span>
-              <input type="text" name="title" maxLength="30" value={this.state.title} onChange={this.onChangeTitle} />
+              <input type="text" name="title" maxLength="30" value={title} onChange={this.onChangeTitle} />
             </span>
           </label>
 
@@ -136,7 +135,7 @@ class AddDate extends React.Component {
           <label>
             City:
             <span>
-              <input type="text" name="city" maxLength="30" value={this.state.city} onChange={this.onChangeCity} />
+              <input type="text" name="city" maxLength="30" value={city} onChange={this.onChangeCity} />
             </span>
           </label>
 

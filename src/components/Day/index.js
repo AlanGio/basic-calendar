@@ -1,8 +1,7 @@
 
-const PropTypes = require('prop-types');
-const React = require('react');
-const dateFns = require('date-fns');
-
+import PropTypes from 'prop-types';
+import React from 'react';
+import dateFns from 'date-fns';
 
 class Day extends React.Component {
   constructor(props) {
@@ -15,7 +14,6 @@ class Day extends React.Component {
   render() {
     const dateFormat = 'dddd';
     const days = [];
-
     const startDate = dateFns.startOfWeek(this.state.currentMonth);
 
     for (let i = 0; i < 7; i += 1) {
