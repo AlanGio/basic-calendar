@@ -14,7 +14,7 @@ const Header = ({ currentMonth, prevMonth, nextMonth }) => {
         </span>
         <hr />
         <small>
-          Click any day for add a reminder
+          Click on any day to add a reminder
         </small>
       </div>
       <div className="col col-end" onClick={nextMonth}>

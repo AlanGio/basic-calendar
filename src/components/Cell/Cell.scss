@@ -1,6 +1,16 @@
 .calendar {
   .col {
     overflow-y: auto !important;
+    .removeall {
+      width: 50%;
+      background-color: orangered;
+      font-size: 10px;
+      opacity: 0.7;
+      height: 20px;
+      margin-top: 4px;
+      margin-bottom: 8px;
+      margin-left: 0;
+    }
 
     &:first-child {
       margin-top: 0;
@@ -17,7 +27,7 @@
       font-weight: 500;
 
       &:last-child {
-        margin-bottom: 8px;
+        margin-bottom: 20px;
 
         &:after {
           content: 'Add Reminder';

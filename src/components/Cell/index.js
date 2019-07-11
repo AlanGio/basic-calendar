@@ -53,6 +53,13 @@ class Cell extends React.Component {
     });
   }
 
+  deleteAllReminders(e, todayReminders) {
+    e.stopPropagation(e);
+    for (let i in todayReminders) { 
+      this.props.removeReminder(todayReminders[i]);
+    }
+  }
+
   handleCellClick(cloneDay) {
     this.props.onDateClick(dateFns.parse(cloneDay));
     this.setState({
@@ -99,6 +106,7 @@ class Cell extends React.Component {
               {formattedDate}
             </span>
 
+            {todayReminders.length > 0 && (<button className="removeall" onClick={(e) => this.deleteAllReminders(e, todayReminders)}>X Clean Date</button>)}
             {todayReminders.map((reminder, index) => {
               return  <div className="event" key={`dat_${index}`} style={{ backgroundColor: reminder.color }}>
                         <div className="edit" onClick={(e) => this.editReminder(e, reminder)} />
